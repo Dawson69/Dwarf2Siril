@@ -2,8 +2,11 @@
 import os
 import tkinter.filedialog as tk
 import json
+import re
+filepath = tk.askdirectory(initialdir="D:\\Astronomy\\test")
 
-filepath = tk.askdirectory(initialdir="D:\\Astronomy")
+tmp = re.split('_' , filepath)
+filedate = tmp[2]
 
 f = open(filepath+"/shotsInfo.json")
 
@@ -22,11 +25,10 @@ else:
     os.mkdir(filepath+"/darks")
     os.mkdir(filepath+"/biases")
     os.mkdir(filepath+"/flats")
-    # shutil.move(filepath+"/*.fits", filepath+"/lights")
 files = os.listdir(filepath)
 for f in files:
     if os.path.isfile(filepath+"/"+f):
         if f.endswith(".fits"):
-            os.rename(filepath+"/"+f,filepath+"/lights/"+f )
+            os.rename(filepath+"/"+f,filepath+"/lights/"+filedate+"_"+f )
 
 os.rename(filepath, filepath+"_"+target)
