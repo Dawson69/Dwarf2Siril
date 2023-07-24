@@ -3,7 +3,7 @@ import os
 import tkinter.filedialog as tk
 import json
 import re
-filepath = tk.askdirectory(initialdir="D:\\Astronomy\\test")
+filepath = tk.askdirectory(initialdir="D:\\Astronomy")
 
 tmp = re.split('_' , filepath)
 filedate = tmp[2]
